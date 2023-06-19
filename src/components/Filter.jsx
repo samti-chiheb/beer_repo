@@ -1,47 +1,57 @@
 import React, { useState } from "react";
 
-const Filter = ({ filterParams, onFilterChange }) => {
-  const [formFields, setFormFields] = useState(filterParams);
+const FilterComponent = ({ onFilter }) => {
+  const [brewedBefore, setBrewedBefore] = useState("");
+  const [food, setFood] = useState("");
+  const [abvGt, setAbvGt] = useState("");
 
-  const handleChange = (event) => {
-    setFormFields({
-      ...formFields,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const handleFilter = () => {
+    // Create an object with the filter parameters based on user input
+    const filters = {
+      brewed_before: brewedBefore,
+      food: food,
+      abv_gt: abvGt,
+    };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onFilterChange(formFields);
-    console.log(formFields);
+    // Convert the filter object to a query string
+    const queryString = Object.entries(filters)
+      .filter(([key, value]) => value !== "") // Exclude empty values
+      .map(([key, value]) => `${key}=${value}`)
+      .join("&");
+
+    // Pass the query string to the parent component
+    onFilter(queryString);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <label htmlFor="brewedBefore">Brewed Before:</label>
       <input
         type="text"
-        name="food"
-        value={formFields.food || ""}
-        onChange={handleChange}
-        placeholder="Food..."
+        id="brewedBefore"
+        value={brewedBefore}
+        onChange={(e) => setBrewedBefore(e.target.value)}
       />
+
+      <label htmlFor="food">Food:</label>
       <input
         type="text"
-        name="brewed_before"
-        value={formFields.brewed_before || ""}
-        onChange={handleChange}
-        placeholder="Brewed before (mm-yyyy)..."
+        id="food"
+        value={food}
+        onChange={(e) => setFood(e.target.value)}
       />
+
+      <label htmlFor="abvGt">ABV Greater Than:</label>
       <input
         type="number"
-        name="abv_gt"
-        value={formFields.abv_gt || ""}
-        onChange={handleChange}
-        placeholder="ABV greater than..."
+        id="abvGt"
+        value={abvGt}
+        onChange={(e) => setAbvGt(e.target.value)}
       />
-      <button type="submit">Apply filters</button>
-    </form>
+
+      <button onClick={handleFilter}>Apply Filter</button>
+    </div>
   );
 };
 
-export default Filter;
+export default FilterComponent;

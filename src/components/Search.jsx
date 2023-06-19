@@ -1,30 +1,22 @@
 import React, { useState } from "react";
 
-const Search = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const SearchComponent = ({ onSearch }) => {
+  const [searchText, setSearchText] = useState("");
 
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (searchTerm.trim() !== "") {
-      onSearch(searchTerm);
-    }
+  const handleSearch = () => {
+    onSearch(searchText);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <input
         type="text"
-        value={searchTerm}
-        onChange={handleChange}
-        placeholder="Search beers..."
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
       />
-      <button type="submit">Search</button>
-    </form>
+      <button onClick={handleSearch}>Search</button>
+    </div>
   );
 };
 
-export default Search;
+export default SearchComponent;

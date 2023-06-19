@@ -21,7 +21,7 @@ class ApiHandler {
     let url = `beers?page=${page}&per_page=${this.per_page}`;
 
     if (strQuery) {
-      url += `&${strQuery}`;
+      url += strQuery;
     }
 
     return this.service

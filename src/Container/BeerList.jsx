@@ -1,55 +1,54 @@
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import useBeers from "../hook/useBeers";
 import ListTable from "../components/ListTable";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
-import Filter from "../components/Filter";
-import useBeerList from "../hook/useBeerList";
-import useBeerSearch from "../hook/useBeerSearch";
-import useBeerFilter from "../hook/useBeerFilter";
+import FilterComponent from "../components/Filter";
+import { useEffect } from "react";
 
 const BeerList = () => {
-  const navigate = useNavigate();
-  // List data and handlers
-  const list = useBeerList();
-  // Search data and handlers
-  const search = useBeerSearch();
-  // Filter data and handlers
-  const filter = useBeerFilter();
+  const [searchParam, setSearchParam] = useState("");
+  const [filtreParam, setFiltreParam] = useState("");
+  const [caching, setCaching] = useState(true);
 
-  const getDisplayConfig = () => {
-    if (search.searchTerm) {
-      return search;
-    } else if (Object.keys(filter.filterParams).length > 0) {
-      return filter;
-    }else{
-      return list;
-    }
-  };
-  console.log(getDisplayConfig);
+  // Call the useBeers hook to fetch and manage beer data
   const {
-    data: displayList,
+    data,
     currentPage,
     lastPage,
     isLoading,
     handlePrevPage,
     handleNextPage,
     handlePageChange,
-  } = getDisplayConfig();
+  } = useBeers(caching, filtreParam, searchParam);
 
-  const handleClick = (id) => {
-    navigate(`/beer/${id}`);
+  // Reset the search and filter parameters
+  const handleReset = () => {
+    setCaching(true);
+    setSearchParam("");
+    setFiltreParam("");
+  };
+
+  // Update the filter parameter and disable caching
+  const handleFilter = (query) => {
+    setFiltreParam(query);
+    setCaching(false);
+  };
+
+  // Update the search parameter and disable caching
+  const handleSearch = (query) => {
+    setCaching(false);
+    setSearchParam(query);
   };
 
   return (
     <div>
       <h1>Beer List</h1>
       <button onClick={() => sessionStorage.clear()}>Clear cache</button>
-      <Search onSearch={search.handleSearch} />
-      <Filter
-        filterParams={filter.filterParams}
-        onFilterChange={filter.handleFilterChange}
-      />
-      <ListTable beers={displayList} onClick={handleClick} />
+      <button onClick={handleReset}>Reset</button>
+      <Search onSearch={handleSearch} />
+      <FilterComponent onFilter={handleFilter} />
+      <ListTable beers={data} />
       <Pagination
         currentPage={currentPage}
         onPrevPage={handlePrevPage}

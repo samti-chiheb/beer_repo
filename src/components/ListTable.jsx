@@ -1,6 +1,4 @@
-import React from "react";
-
-const ListTable = ({ beers, onClick }) => {
+const ListTable = ({ beers }) => {
   return (
     <table>
       <thead>

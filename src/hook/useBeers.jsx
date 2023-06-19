@@ -1,60 +1,63 @@
 import { useState, useEffect } from "react";
 import ApiHandler from "../utils/ApiHandler";
 
-const useApiHandler = (isCaching = false, queryParams = "") => {
+const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
+  //set use states
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [lastPage, setLastPage] = useState(null);
 
-  useEffect(() => {
-    fetchData(currentPage);
-  }, [currentPage, queryParams]);
+  // set the query string
+  let query;
+  filtreQuery ? (query = "&" + filtreQuery) : "&";
+  searchQuery ? (query += "&" + searchQuery) : "";
 
   // fetch data
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage, filtreQuery, searchQuery, query]);
+
+  // fetch data function
   const fetchData = async (page) => {
     setIsLoading(true);
-
-    // setting last page variables
+    // config session storage variables
     const lastPageKey = isCaching ? "last_page" : "last_query_page";
     const cacheKey = `beers_${page}`;
-
-    // checking if the data should be cached
     const cachedData = sessionStorage.getItem(cacheKey);
 
-    // Check if the data is already in the session storage
+    // fetch data from session storage
     if (cachedData) {
-      // fetch data from session storage
       setData(JSON.parse(cachedData));
       setIsLoading(false);
-
-      // fetch data from API
     } else {
+      // fetch data from ApiHandler
       try {
         const apiHandler = new ApiHandler();
-        const fetchedData = await apiHandler.getBeers(page, queryParams);
+        const fetchedData = await apiHandler.getBeers(page, query);
+        console.log(page);
         setData(fetchedData);
 
-        // Save the data to the session storage
-        if(isCaching){
+        // set data to session storage
+        if (isCaching) {
           sessionStorage.setItem(cacheKey, JSON.stringify(fetchedData));
-        } 
-        // Check if there is data for the next page
-        const nextPageData = await apiHandler.getBeers(page + 1);
+        }
 
-        // update last page
-        if (nextPageData.length > 0) {
+        // store last page to local storage
+        if (fetchedData.length == 20) {
           sessionStorage.setItem(lastPageKey, JSON.stringify(page + 1));
-        } else {
-          sessionStorage.setItem(lastPageKey, JSON.stringify(page));
         }
       } catch (error) {
         console.error(`Error fetching data: ${error}`);
       }
     }
+
+    //set last page
     setLastPage(sessionStorage.getItem(lastPageKey));
     setIsLoading(false);
   };
+
+  // handle pagination actions
 
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
@@ -68,15 +71,18 @@ const useApiHandler = (isCaching = false, queryParams = "") => {
     setCurrentPage(page);
   };
 
+  //return props
   return {
     data,
     currentPage,
     lastPage,
     isLoading,
+    filtreQuery,
+    searchQuery,
     handlePrevPage,
     handleNextPage,
     handlePageChange,
   };
 };
 
-export default useApiHandler;
+export default useBeer;

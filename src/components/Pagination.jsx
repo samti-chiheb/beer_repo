@@ -20,7 +20,7 @@ const Pagination = ({
   for (let i = 1; i <= maxBeerPages; i++) {
     options.push(
       <option key={i} value={i}>
-        Page {i}
+        {i}
       </option>
     );
   }
@@ -37,13 +37,13 @@ const Pagination = ({
       )}
 
       {/* Current page */}
-      <span>Current Page: {currentPage}</span>
-
-      {/* Page selection */}
-      <select value={currentPage} onChange={handlePageChange}>
-        {options}
-      </select>
-
+      <span>
+        Current Page: 
+        {/* Page selection */}
+        <select value={currentPage} onChange={handlePageChange}>
+          {options}
+        </select>
+      </span>
       {/* Next page */}
       {lastPage == currentPage ? (
         <button disabled>Next Page</button>
