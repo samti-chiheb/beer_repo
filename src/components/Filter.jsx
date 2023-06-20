@@ -21,37 +21,42 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
 
     // Pass the query string to the parent component
     onFilter(queryString);
-
+    console.log(brewedBefore);
     onPageChange(1);
   };
 
   return (
     <div>
-      <label htmlFor="brewedBefore">Brewed Before:</label>
+      <label htmlFor="abvGt">Brewed before : </label>
       <input
+        placeholder="mm-yyyy"
         type="text"
         id="brewedBefore"
         value={brewedBefore}
         onChange={(e) => setBrewedBefore(e.target.value)}
       />
-
-      <label htmlFor="food">Food:</label>
+      <hr />
+      <label htmlFor="abvGt">Greater than : </label>
       <input
-        type="text"
-        id="food"
-        value={food}
-        onChange={(e) => setFood(e.target.value)}
-      />
-
-      <label htmlFor="abvGt">ABV Greater Than:</label>
-      <input
-        type="number"
         id="abvGt"
+        type="number"
+        min="0"
+        max="100"
+        placeholder="0 - 100"
         value={abvGt}
         onChange={(e) => setAbvGt(e.target.value)}
       />
-
+      <hr />
+      <label htmlFor="food">food pairing : </label>
+      <input
+        type="text"
+        id="food"
+        placeholder="food"
+        value={food}
+        onChange={(e) => setFood(e.target.value)}
+      />
       <button onClick={handleFilter}>Apply Filter</button>
+      <hr />
     </div>
   );
 };

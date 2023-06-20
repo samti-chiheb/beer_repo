@@ -11,6 +11,7 @@ const SearchComponent = ({ onSearch, onPageChange }) => {
   return (
     <div>
       <input
+      placeholder="Search..."
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}

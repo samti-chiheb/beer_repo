@@ -25,6 +25,7 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
       setIsLoading(false);
     } else {
       try {
+        console.log(query);
         const apiHandler = new ApiHandler();
         const fetchedData = await apiHandler.getBeers(page, query);
         setData(fetchedData);
