@@ -1,5 +1,6 @@
 
 const Pagination = ({
+  query,
   currentPage,
   onPrevPage,
   onNextPage,
@@ -8,7 +9,7 @@ const Pagination = ({
   onPageChange,
 }) => {
   const isFirstPage = currentPage === 1;
-  const maxBeerPages = parseInt(sessionStorage.getItem("last_page"));
+  const maxPages = !query ? parseInt(sessionStorage.getItem("last_page")) : parseInt(sessionStorage.getItem("last_query_page"));
 
   const handlePageChange = (e) => {
     const selectedPage = parseInt(e.target.value);
@@ -16,8 +17,7 @@ const Pagination = ({
   };
 
   const options = [];
-
-  for (let i = 1; i <= maxBeerPages; i++) {
+  for (let i = 1; i <= maxPages; i++) {
     options.push(
       <option key={i} value={i}>
         {i}

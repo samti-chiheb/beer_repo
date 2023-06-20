@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-const SearchComponent = ({ onSearch }) => {
+const SearchComponent = ({ onSearch, onPageChange }) => {
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
     onSearch(searchText);
+    onPageChange(1);
   };
 
   return (

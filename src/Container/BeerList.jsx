@@ -31,8 +31,8 @@ const BeerList = () => {
 
   // Update the filter parameter and disable caching
   const handleFilter = (query) => {
-    setFiltreQuery(query);
     setCaching(false);
+    setFiltreQuery(query);
   };
 
   // Update the search parameter and disable caching
@@ -46,10 +46,14 @@ const BeerList = () => {
       <h1>Beer List</h1>
       <button onClick={() => sessionStorage.clear()}>Clear cache</button>
       <button onClick={handleReset}>Reset</button>
-      <Search onSearch={handleSearch} />
-      <FilterComponent onFilter={handleFilter} />
+      <Search onSearch={handleSearch} onPageChange={handlePageChange} />
+      <FilterComponent
+        onFilter={handleFilter}
+        onPageChange={handlePageChange}
+      />
       <ListTable beers={data} />
       <Pagination
+        query={searchQuery + filtreQuery}
         currentPage={currentPage}
         onPrevPage={handlePrevPage}
         onNextPage={handleNextPage}

@@ -10,7 +10,7 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
   let query;
   filtreQuery ? (query = "&" + filtreQuery) : (query = "");
   searchQuery ? (query += "&" + "beer_name="+searchQuery) : "";
-
+  
   useEffect(() => {
     fetchData(currentPage, query);
   }, [currentPage, query]);
@@ -18,9 +18,8 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
   const fetchData = async (page, query) => {
     setIsLoading(true);
     const lastPageKey = isCaching ? "last_page" : "last_query_page";
-    const cacheKey = `beers_${page}`;
+    const cacheKey = `beers_${page}_${query}`;
     const cachedData = sessionStorage.getItem(cacheKey);
-
     if (cachedData) {
       setData(JSON.parse(cachedData));
       setIsLoading(false);
@@ -34,9 +33,16 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
           sessionStorage.setItem(cacheKey, JSON.stringify(fetchedData));
         }
 
+        // if you have access to the api response length  
+          
+        
+        // you can update this with the actual api.response.length else use this to count api response length
         if (fetchedData.length === 20) {
-          sessionStorage.setItem(lastPageKey, JSON.stringify(page + 1));
+          sessionStorage.setItem(lastPageKey, JSON.stringify(page + 1)); 
+        } else {
+          sessionStorage.setItem(lastPageKey, JSON.stringify(page));
         }
+
       } catch (error) {
         console.error(`Error fetching data: ${error}`);
       }

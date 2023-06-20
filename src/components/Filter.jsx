@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FilterComponent = ({ onFilter }) => {
+const FilterComponent = ({ onFilter, onPageChange }) => {
   const [brewedBefore, setBrewedBefore] = useState("");
   const [food, setFood] = useState("");
   const [abvGt, setAbvGt] = useState("");
@@ -21,6 +21,8 @@ const FilterComponent = ({ onFilter }) => {
 
     // Pass the query string to the parent component
     onFilter(queryString);
+
+    onPageChange(1);
   };
 
   return (
