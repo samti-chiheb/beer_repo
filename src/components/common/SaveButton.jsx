@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ApiHandler from "../../utils/ApiHandler";
 import ShowAlert from "./ShowAlert";
+import { StyledButton } from "../styles/Button.style";
 
 const SaveButton = ({ id, name }) => {
   // set alert object
@@ -56,7 +57,7 @@ const SaveButton = ({ id, name }) => {
   return (
     <>
       <ShowAlert alert={alert} />
-      <button onClick={handleClick}>Click</button>
+      <StyledButton onClick={handleClick}>Save it</StyledButton>
     </>
   );
 };

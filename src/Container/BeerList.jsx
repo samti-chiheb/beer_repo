@@ -4,6 +4,7 @@ import ListTable from "../components/ListTable";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import FilterComponent from "../components/Filter";
+import { StyledButton } from "../components/styles/Button.style";
 
 const BeerList = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,13 +17,12 @@ const BeerList = () => {
     currentPage,
     lastPage,
     isLoading,
-    handlePrevPage,
-    handleNextPage,
     handlePageChange,
   } = useBeers(caching, filtreQuery, searchQuery);
 
   // Reset the search and filter parameters
   const handleReset = () => {
+    handlePageChange(1);
     setCaching(true);
     setSearchQuery("");
     setFiltreQuery("");
@@ -44,7 +44,6 @@ const BeerList = () => {
   return (
     <div>
       <h1>Beer List</h1>
-      <button onClick={handleReset}>Reset</button>
       <Search 
         onSearch={handleSearch} 
         onPageChange={handlePageChange} 
@@ -53,12 +52,11 @@ const BeerList = () => {
         onFilter={handleFilter}
         onPageChange={handlePageChange}
       />
+      <StyledButton onClick={handleReset}>Reset</StyledButton>
       <ListTable beers={data} />
       <Pagination
         query={searchQuery + filtreQuery}
         currentPage={currentPage}
-        onPrevPage={handlePrevPage}
-        onNextPage={handleNextPage}
         isLoading={isLoading}
         lastPage={lastPage}
         onPageChange={handlePageChange}

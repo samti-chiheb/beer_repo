@@ -1,18 +1,19 @@
+import { StyledButton } from "./styles/Button.style";
+import { StyledSelect } from "./styles/Select.styled";
 
 const Pagination = ({
   query,
   currentPage,
-  onPrevPage,
-  onNextPage,
   isLoading,
   lastPage,
   onPageChange,
 }) => {
   const isFirstPage = currentPage === 1;
-  
-  
-  // set max pages 
-  const maxPages = !query ? parseInt(sessionStorage.getItem("last_page")) : parseInt(sessionStorage.getItem("last_query_page"));
+
+  // set max pages
+  const maxPages = !query
+    ? parseInt(sessionStorage.getItem("last_page"))
+    : parseInt(sessionStorage.getItem("last_query_page"));
 
   // set options for pagination
   const options = [];
@@ -24,40 +25,45 @@ const Pagination = ({
     );
   }
 
-  // handle chaging pages using selected options
+  //pagination logic
   const handlePageChange = (e) => {
-    const selectedPage = parseInt(e.target.value);
-    onPageChange(selectedPage);
+    onPageChange(e);
   };
 
+  const handlePrevPage = () => {
+    if (currentPage > 1) handlePageChange(currentPage - 1);
+  };
+  const handleNextPage = () => {
+    if (currentPage < lastPage) handlePageChange(currentPage + 1);
+  };
 
   return (
     <div>
       {/* Previous page */}
       {isFirstPage ? (
-        <button disabled>Previous Page</button>
+        <StyledButton disabled>Previous Page</StyledButton>
       ) : (
-        <button onClick={onPrevPage} disabled={isLoading}>
+        <StyledButton onClick={handlePrevPage} disabled={isLoading}>
           Previous Page
-        </button>
+        </StyledButton>
       )}
 
       {/* Current page */}
       <span>
-        Current Page: 
+        Current Page:
         {/* Page selection */}
-        <select value={currentPage} onChange={handlePageChange}>
+        <StyledSelect value={currentPage} onChange={handlePageChange}>
           {options}
-        </select>
+        </StyledSelect>
       </span>
-      
+
       {/* Next page */}
       {lastPage == currentPage ? (
-        <button disabled>Next Page</button>
+        <StyledButton disabled>Next Page</StyledButton>
       ) : (
-        <button onClick={onNextPage} disabled={isLoading}>
+        <StyledButton onClick={handleNextPage} disabled={isLoading}>
           Next Page
-        </button>
+        </StyledButton>
       )}
     </div>
   );

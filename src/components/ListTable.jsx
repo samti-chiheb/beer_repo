@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {StyledTable} from "./styles/Table.styled"
 
 const ListTable = ({ beers }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const ListTable = ({ beers }) => {
 
   // rendre data
   return (
-    <table>
+    <StyledTable>
       <thead>
         <tr>
           <th>N°</th>
@@ -31,7 +32,7 @@ const ListTable = ({ beers }) => {
           </tr>
         ))}
       </tbody>
-    </table>
+    </StyledTable>
   );
 };
 

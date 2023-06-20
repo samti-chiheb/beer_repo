@@ -1,8 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BeerCard from "../components/BeerCard";
+import Article from "../components/Article";
 import ApiHandler from "../utils/ApiHandler";
-import SaveButton from "../components/common/saveButton";
+import styled from "styled-components";
+
+const ArticleCard = styled.div`
+  margin: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center
+  }
+`;
 
 const BeerDetails = () => {
   const navigate = useNavigate();
@@ -14,6 +30,7 @@ const BeerDetails = () => {
   //set variables
   const [beer, setBeer] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isBeerLoaded, setIsBeerLoaded] = useState(false);
 
   // fetch data
   const fetchData = async () => {
@@ -34,6 +51,7 @@ const BeerDetails = () => {
 
         //save data to local storage
         sessionStorage.setItem(cacheKey, JSON.stringify(beerData));
+        setIsBeerLoaded(true);
       } catch (error) {
         console.error("Error fetching beer:", error);
       }
@@ -41,22 +59,21 @@ const BeerDetails = () => {
   };
 
   useEffect(() => {
-    // navigate to error page is url is not supported 
+    // navigate to error page is url is not supported
     if (Number.isNaN(urlId)) {
       navigate("/404");
       return;
     }
-
     // fetch data
     fetchData();
   }, []);
 
   return (
     // render component
-    <div>
+    <ArticleCard>
       <BeerCard beer={beer} />
-      <SaveButton id={beer.id} name={beer.name} />
-    </div>
+      {Object.keys(beer).length > 0 && <Article beer={beer} />}
+    </ArticleCard>
   );
 };
 

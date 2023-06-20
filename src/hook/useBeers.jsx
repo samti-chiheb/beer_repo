@@ -68,13 +68,7 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
     setIsLoading(false);
   };
 
-  //pagination logic
-  const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-  const handleNextPage = () => {
-    if (currentPage < lastPage) setCurrentPage(currentPage + 1);
-  };
+  //passing changing pages
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -87,8 +81,6 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
     isLoading,
     filtreQuery,
     searchQuery,
-    handlePrevPage,
-    handleNextPage,
     handlePageChange,
   };
 };

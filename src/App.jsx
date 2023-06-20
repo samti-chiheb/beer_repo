@@ -2,8 +2,10 @@ import React from "react";
 import BeerList from "./Container/BeerList";
 import BeerDetails from "./Container/BeerDetails";
 import {Routes, Route} from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar";
 import NotFound from "./Container/NotFound";
+// import {Container} from "./components/styles/Container"
+
 
 const App = () => {
   return (

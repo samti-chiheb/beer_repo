@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { StyledSearchBox } from "./styles/SearchBox.styled";
+import { StyledButton } from "./styles/Button.style";
 
 const SearchComponent = ({ onSearch, onPageChange }) => {
   const [searchText, setSearchText] = useState("");
@@ -14,13 +15,13 @@ const SearchComponent = ({ onSearch, onPageChange }) => {
 
   return (
     <div>
-      <input
-      placeholder="Search..."
+      <StyledSearchBox
+        placeholder="Search..."
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
+      <StyledButton onClick={handleSearch}>Search</StyledButton>
     </div>
   );
 };

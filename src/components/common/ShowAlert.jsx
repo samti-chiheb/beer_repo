@@ -6,7 +6,6 @@ const ShowAlert = ({ alert }) => {
   
   return (
     <>
-      <h4>show alert</h4>
       <div style={{ display: isVisible ? "block" : "none" }}>
         <div className={`save-message ${alertType}`}>
           <p>{alertMessage}</p>
