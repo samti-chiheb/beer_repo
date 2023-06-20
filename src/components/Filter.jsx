@@ -13,18 +13,20 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
       abv_gt: abvGt,
     };
 
-    // Convert the filter object to a query string
+    // Convert the filter object to a query string "key&value" pair
     const queryString = Object.entries(filters)
-      .filter(([key, value]) => value !== "") // Exclude empty values
+      .filter(([key, value]) => value !== "") 
       .map(([key, value]) => `${key}=${value}`)
       .join("&");
 
     // Pass the query string to the parent component
     onFilter(queryString);
-    console.log(brewedBefore);
+
+    //set current page to one
     onPageChange(1);
   };
 
+  //rendre filtre component
   return (
     <div>
       <label htmlFor="abvGt">Brewed before : </label>

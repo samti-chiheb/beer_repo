@@ -1,8 +1,9 @@
 import React from "react";
 
 const ShowAlert = ({ alert }) => {
+  // Destructure the properties from the alert object
   const { alertMessage, alertType, isVisible } = alert;
-  console.log(isVisible);
+  
   return (
     <>
       <h4>show alert</h4>

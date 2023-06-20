@@ -9,13 +9,12 @@ const Pagination = ({
   onPageChange,
 }) => {
   const isFirstPage = currentPage === 1;
+  
+  
+  // set max pages 
   const maxPages = !query ? parseInt(sessionStorage.getItem("last_page")) : parseInt(sessionStorage.getItem("last_query_page"));
 
-  const handlePageChange = (e) => {
-    const selectedPage = parseInt(e.target.value);
-    onPageChange(selectedPage);
-  };
-
+  // set options for pagination
   const options = [];
   for (let i = 1; i <= maxPages; i++) {
     options.push(
@@ -24,6 +23,13 @@ const Pagination = ({
       </option>
     );
   }
+
+  // handle chaging pages using selected options
+  const handlePageChange = (e) => {
+    const selectedPage = parseInt(e.target.value);
+    onPageChange(selectedPage);
+  };
+
 
   return (
     <div>
@@ -44,6 +50,7 @@ const Pagination = ({
           {options}
         </select>
       </span>
+      
       {/* Next page */}
       {lastPage == currentPage ? (
         <button disabled>Next Page</button>

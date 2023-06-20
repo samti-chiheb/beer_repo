@@ -3,36 +3,43 @@ import ApiHandler from "../../utils/ApiHandler";
 import ShowAlert from "./ShowAlert";
 
 const SaveButton = ({ id, name }) => {
+  // set alert object
   const [alert, setAlert] = useState({
     alertMessage: "",
     alertType: "",
     isVisible: false,
   });
 
-  const handleClick = () => {
-    // handle save beer api
-    const fetchBeer = async () => {
-      try {
-        const api = new ApiHandler();
-        await api.saveBeer(id, name);
-        setAlert({
-          alertMessage: "Beer saved successfully",
-          alertType: "success",
-          isVisible: true,
-        });
-      } catch (error) {
-        setAlert({
-          alertMessage: "Beer saved failed",
-          alertType: "error",
-          isVisible: true,
-        });
-        console.error("Error fetching beer:", error);
-      }
-    };
+  // handle save beer api
+  const fetchBeer = async () => {
+    // fetch data
+    try {
+      const api = new ApiHandler();
+      await api.saveBeer(id, name);
 
+      // handle alert message
+      setAlert({
+        alertMessage: "Beer saved successfully",
+        alertType: "success",
+        isVisible: true,
+      });
+    } catch (error) {
+      //handle alert message
+      setAlert({
+        alertMessage: "Beer saved failed",
+        alertType: "error",
+        isVisible: true,
+      });
+      console.error("Error fetching beer:", error);
+    }
+  };
+
+  // execute the save beer api
+  const handleClick = () => {
     fetchBeer();
   };
 
+  // handle alert diplayed timeout
   useEffect(() => {
     const timer = setTimeout(() => {
       setAlert((prevState) => ({
@@ -41,9 +48,11 @@ const SaveButton = ({ id, name }) => {
       }));
     }, 3000);
 
+    // clear timeout
     return () => clearTimeout(timer);
   }, [alert.isVisible]);
 
+  // render the alert component
   return (
     <>
       <ShowAlert alert={alert} />

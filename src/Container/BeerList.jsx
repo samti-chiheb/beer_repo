@@ -4,14 +4,13 @@ import ListTable from "../components/ListTable";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import FilterComponent from "../components/Filter";
-import { useEffect } from "react";
 
 const BeerList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filtreQuery, setFiltreQuery] = useState("");
   const [caching, setCaching] = useState(true);
 
-  // Call the useBeers hook to fetch and manage beer data
+  // Call the useBeers hook to fetch and manage responses
   const {
     data,
     currentPage,
@@ -41,12 +40,15 @@ const BeerList = () => {
     setSearchQuery(query);
   };
 
+  // render the page components
   return (
     <div>
       <h1>Beer List</h1>
-      <button onClick={() => sessionStorage.clear()}>Clear cache</button>
       <button onClick={handleReset}>Reset</button>
-      <Search onSearch={handleSearch} onPageChange={handlePageChange} />
+      <Search 
+        onSearch={handleSearch} 
+        onPageChange={handlePageChange} 
+      />
       <FilterComponent
         onFilter={handleFilter}
         onPageChange={handlePageChange}

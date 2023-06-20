@@ -1,29 +1,34 @@
 import axios from "axios";
 
 class ApiHandler {
+  // initi API request
   constructor() {
     this.service = axios.create({
       baseURL: "https://api.punkapi.com/v2/",
-      timeout: 5000,
     });
-    this.per_page = 20;
+    this.items_per_page = 20;
   }
 
-  getPerPage(){
-    return this.per_page;
+  // return nombre of responses per page
+  getItemsPerPage() {
+    return this.items_per_page;
   }
 
-  setPerPage(perPage){
-    this.per_page = perPage;
+  // set nombre of responses per page
+  setItemsPerPage(perPage) {
+    this.items_per_page = perPage;
   }
 
+  //get reponses foreach page and each query
   getBeers(page = 1, strQuery = "") {
-    let url = `beers?page=${page}&per_page=${this.per_page}`;
+    let url = `beers?page=${page}&per_page=${this.items_per_page}`;
 
+    //add query string to url
     if (strQuery) {
       url += strQuery;
     }
 
+    // execute API call
     return this.service
       .get(url)
       .then((response) => response.data)
@@ -32,6 +37,7 @@ class ApiHandler {
       });
   }
 
+  // get one response by id
   getBeerById(id) {
     return this.service
       .get(`beers/${id}`)
@@ -41,6 +47,7 @@ class ApiHandler {
       });
   }
 
+  // get one random response
   getRandomBeer() {
     return this.service
       .get("beers/random")
@@ -50,8 +57,8 @@ class ApiHandler {
       });
   }
 
+  // save response do database endpoint using POST method
   saveBeer(id, name) {
-    // Attempt to POST data to a non-existent endpoint
     return this.service
       .post("save_beer", { id, name })
       .then((response) => response.data)

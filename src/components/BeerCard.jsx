@@ -1,6 +1,7 @@
 import React from "react";
 
 const BeerCard = ({ beer }) => {
+  // Destructure the properties from the beer object
   const { name, tagline, description, abv, ibu, image_url: imageUrl } = beer;
 
   return (

@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 const ListTable = ({ beers }) => {
   const navigate = useNavigate();
 
+  // navigate to a specefic item
   const handleClick = (id) => {
-    // Modify this line to use the correct URL for your application.
     navigate(`/beer/${id}`);
   };
+
+  // rendre data
   return (
     <table>
       <thead>
@@ -19,6 +21,7 @@ const ListTable = ({ beers }) => {
         </tr>
       </thead>
       <tbody>
+        {/* map data to get needed info */}
         {beers.map((beer) => (
           <tr key={beer.id} onClick={() => handleClick(beer.id)}>
             <td>{beer.id} </td>
