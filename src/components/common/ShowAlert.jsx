@@ -1,17 +1,13 @@
 import React from "react";
+import { Alert } from "../styles/Alert.style";
 
 const ShowAlert = ({ alert }) => {
-  // Destructure the properties from the alert object
   const { alertMessage, alertType, isVisible } = alert;
-  
+
   return (
-    <>
-      <div style={{ display: isVisible ? "block" : "none" }}>
-        <div className={`save-message ${alertType}`}>
-          <p>{alertMessage}</p>
-        </div>
-      </div>
-    </>
+    <Alert $isVisible={isVisible} $alertType={alertType}>
+      <p>{alertMessage}</p>
+    </Alert>
   );
 };
 

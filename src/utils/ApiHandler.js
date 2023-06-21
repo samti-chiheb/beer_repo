@@ -47,16 +47,6 @@ class ApiHandler {
       });
   }
 
-  // get one random response
-  getRandomBeer() {
-    return this.service
-      .get("beers/random")
-      .then((response) => response.data[0])
-      .catch((error) => {
-        throw new Error(`Error while fetching random beer! status: ${error}`);
-      });
-  }
-
   // save response do database endpoint using POST method
   saveBeer(id, name) {
     return this.service

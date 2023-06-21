@@ -35,7 +35,6 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
     } else {
       // if data do not exist in session storage fetch from API
       try {
-        console.log(query);
         const apiHandler = new ApiHandler();
         const itemsPerPage = apiHandler.getItemsPerPage();
         const fetchedData = await apiHandler.getBeers(page, query);

@@ -1,16 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const ArticleCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px;
-
-  h2{
-    margin-top: 0;
-  }
-`;
+import { StyledArticle } from "./styles/Article.style";
 
 const Article = ({ beer }) => {
   const {
@@ -20,10 +9,9 @@ const Article = ({ beer }) => {
     brewers_tips: brewersTips,
     contributed_by: contributedBy,
   } = beer;
-  console.log(beer);
   
   return (
-    <ArticleCard>
+    <StyledArticle>
       <h2>Method</h2>
       <p>
         Mash Temp: {method.mash_temp[0].temp.value}°C (
@@ -60,7 +48,7 @@ const Article = ({ beer }) => {
       <p>{brewersTips}</p>
 
       <p>Contributed By: {contributedBy}</p>
-    </ArticleCard>
+    </StyledArticle>
   );
 };
 

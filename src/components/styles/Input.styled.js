@@ -16,6 +16,10 @@ export const StyledInput = styled.input`
     border-bottom: 1px solid #9376ad;
   }
 
+  &::placeholder {
+    color: #d0c1d4;
+  }
+
   @media (max-width: 768px) {
     white-space: normal;
     word-wrap: break-word;

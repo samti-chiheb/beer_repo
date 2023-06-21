@@ -4,6 +4,7 @@ import ShowAlert from "./ShowAlert";
 import { StyledButton } from "../styles/Button.style";
 
 const SaveButton = ({ id, name }) => {
+  const [loading, setLoading] = useState(false)
   // set alert object
   const [alert, setAlert] = useState({
     alertMessage: "",
@@ -13,6 +14,7 @@ const SaveButton = ({ id, name }) => {
 
   // handle save beer api
   const fetchBeer = async () => {
+    setLoading(true)
     // fetch data
     try {
       const api = new ApiHandler();
@@ -27,12 +29,13 @@ const SaveButton = ({ id, name }) => {
     } catch (error) {
       //handle alert message
       setAlert({
-        alertMessage: "Beer saved failed",
+        alertMessage: "saving beer failed",
         alertType: "error",
         isVisible: true,
       });
       console.error("Error fetching beer:", error);
     }
+    setLoading(false);
   };
 
   // execute the save beer api
@@ -43,11 +46,12 @@ const SaveButton = ({ id, name }) => {
   // handle alert diplayed timeout
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAlert((prevState) => ({
-        ...prevState,
+      setAlert({
+        alertMessage: "",
+        alertType: "",
         isVisible: false,
-      }));
-    }, 3000);
+      });
+    }, 2000);
 
     // clear timeout
     return () => clearTimeout(timer);
@@ -57,7 +61,9 @@ const SaveButton = ({ id, name }) => {
   return (
     <>
       <ShowAlert alert={alert} />
-      <StyledButton onClick={handleClick}>Save it</StyledButton>
+      <StyledButton onClick={handleClick} disabled={loading}>
+        Save it
+      </StyledButton>
     </>
   );
 };

@@ -1,18 +1,23 @@
 import {styled } from 'styled-components'
 
 export const StyledSearchBox = styled.input`
+  margin-right: 6px;
   width: 75%;
   padding: 8px;
-  border: 1px solid #ACAD87;
+  border: 2px solid #ebdcfa;
   background-color: transparent;
-  color: #FFFFFA;
+  color: #213547;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   &:focus {
     outline: none;
-    border-color: blue;
+    border-color: #9376ad;
+  }
+
+  &::placeholder {
+    color: #d0c1d4;
   }
 
   @media (max-width: 768px) {

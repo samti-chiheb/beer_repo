@@ -16,7 +16,8 @@ const ArticleCard = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center
+    justify-content: center;
+    padding: 32px;
   }
 `;
 
@@ -30,7 +31,6 @@ const BeerDetails = () => {
   //set variables
   const [beer, setBeer] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isBeerLoaded, setIsBeerLoaded] = useState(false);
 
   // fetch data
   const fetchData = async () => {
@@ -51,7 +51,6 @@ const BeerDetails = () => {
 
         //save data to local storage
         sessionStorage.setItem(cacheKey, JSON.stringify(beerData));
-        setIsBeerLoaded(true);
       } catch (error) {
         console.error("Error fetching beer:", error);
       }

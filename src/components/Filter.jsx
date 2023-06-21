@@ -40,7 +40,7 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
         value={brewedBefore}
         onChange={(e) => setBrewedBefore(e.target.value)}
       />
-      <StyledLabel htmlFor="abvGt">Greater than : </StyledLabel>
+      <StyledLabel htmlFor="abvGt">ABV Greater than : </StyledLabel>
       <StyledInput
         id="abvGt"
         type="number"
@@ -50,7 +50,7 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
         value={abvGt}
         onChange={(e) => setAbvGt(e.target.value)}
       />
-      <StyledLabel htmlFor="food">food pairing : </StyledLabel>
+      <StyledLabel htmlFor="food">Food pairing : </StyledLabel>
       <StyledInput
         type="text"
         id="food"

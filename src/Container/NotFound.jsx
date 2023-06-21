@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { StyledButton } from '../components/styles/Button.style';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -10,9 +11,9 @@ const NotFound = () => {
 
   // render the 404 page
   return (
-    <div>
+    <div className="not-found">
       <h1>404 Page Not Found</h1>
-      <button onClick={handleGoBack}>Go Back</button>
+      <StyledButton onClick={handleGoBack}>Go Back</StyledButton>
     </div>
   );
 };

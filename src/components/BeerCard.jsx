@@ -1,28 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import SaveButton from "./common/saveButton";
+import { Card } from "./styles/Carde.style";
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-
-  img {
-    height: 300px;
-  }
-  p{
-    margin: 6px;
-  }
-  span{
-    margin: 0 16px;
-  }
-`;
 
 const BeerCard = ({ beer }) => {
   // Destructure the properties from the beer object

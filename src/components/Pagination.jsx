@@ -1,5 +1,6 @@
 import { StyledButton } from "./styles/Button.style";
 import { StyledSelect } from "./styles/Select.styled";
+import { StyledPagination } from "./styles/Pagination.styled";
 
 const Pagination = ({
   query,
@@ -38,7 +39,7 @@ const Pagination = ({
   };
 
   return (
-    <div>
+    <StyledPagination>
       {/* Previous page */}
       {isFirstPage ? (
         <StyledButton disabled>Previous Page</StyledButton>
@@ -65,7 +66,7 @@ const Pagination = ({
           Next Page
         </StyledButton>
       )}
-    </div>
+    </StyledPagination>
   );
 };
 

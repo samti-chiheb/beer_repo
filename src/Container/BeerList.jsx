@@ -42,18 +42,15 @@ const BeerList = () => {
 
   // render the page components
   return (
-    <div>
+    <div className="beer-list">
       <h1>Beer List</h1>
-      <Search 
-        onSearch={handleSearch} 
-        onPageChange={handlePageChange} 
-      />
+      <Search onSearch={handleSearch} onPageChange={handlePageChange} />
       <FilterComponent
         onFilter={handleFilter}
         onPageChange={handlePageChange}
       />
       <StyledButton onClick={handleReset}>Reset</StyledButton>
-      <ListTable beers={data} />
+      <ListTable beers={data} isLoading={isLoading} />
       <Pagination
         query={searchQuery + filtreQuery}
         currentPage={currentPage}
