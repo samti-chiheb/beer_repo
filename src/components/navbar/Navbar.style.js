@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledNavbar = styled.nav`
   position: fixed;
   top: 0;
+  z-index: 9;
   background-color: #acad87;
   display: flex;
   flex-direction: row;
