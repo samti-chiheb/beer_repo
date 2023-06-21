@@ -18,13 +18,11 @@ To run the Beer App locally, follow these steps:
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
 3. Install the required dependencies by running the following command:
-    
     ```
     npm install
     ```
     
 4. Start the development server by running the following command:
-    
     ```
     npm run dev
     ```
@@ -41,56 +39,30 @@ The Beer App is built using the following technologies:
 - Axios: A promise-based HTTP client for making API requests.
 - styled-components: A CSS-in-JS library for styling React components.
 
-## **Architecture**
+## **Challenges Faced**
 
-### **tree**
-├── App.jsx
-├── Container
-│   ├── BeerDetails.jsx
-│   ├── BeerList.jsx
-│   └── NotFound.jsx
-├── assets
-│   └── react.svg
-├── components
-│   ├── BeerCard.jsx
-│   ├── Filter.jsx
-│   ├── ListTable.jsx
-│   ├── Pagination.jsx
-│   ├── Search.jsx
-│   ├── common
-│   │   ├── SaveButton.jsx
-│   │   └── ShowAlert.jsx
-│   └── navbar
-│       └── Navbar.jsx
-├── hook
-│   └── useBeers.jsx
-├── index.css
-├── main.jsx
-└── utils
-    └── ApiHandler.js
+Developing the Beer App was a rich learning process with several challenges to overcome.
+
+- **Calculating the last page**: The API I used did not provide an endpoint for the length, so calculating the last page was a challenge. I opted to dynamically set the last page with each API call, which proved to be an effective workaround for this issue.
+
+- **Caching data**: Caching data was also a challenge as I initially did not know how to do it. I initially cached pages and a single product, but later realized I could fetch pages to get the single product. This realization greatly improved the efficiency of caching within the application.
+
+- **Practice with React and styled-components**: This project was an excellent opportunity to practice with React and styled-components. I learned new techniques and enhanced my skills in these technologies while developing a functional and useful application.
+
+These challenges significantly contributed to my growth as a developer and I am looking forward to overcoming more challenges in my future projects.
 
 
-The Beer App follows a component-based architecture. Here's an overview of the major components and their responsibilities:
+## **Future Development**
 
-- **App**: The root component that sets up routing and renders the main pages of the application.
-- **BeerList**: Renders the list of beers and handles search, filtering, and pagination functionality.
-- **BeerDetails**: Displays detailed information about a specific beer.
-- **Navbar**: Provides navigation links for different sections of the application.
-- **ListTable**: Renders the table of beers with their basic details.
-- **Pagination**: Handles pagination functionality for navigating through the list of beers.
-- **SearchComponent**: Provides the search bar for searching beers by name.
-- **FilterComponent**: Allows users to apply filters to refine the beer list.
-- **BeerCard**: Displays detailed information about a beer in a card format.
-- **SaveButton**: Allows users to save a beer as a favorite.
+Several enhancements are planned for the Beer App:
 
-The application utilizes the **`ApiHandler`** class and the **`useApi`** hook for API handling.
+- **Navigation Buttons in Beer Details**: I plan to introduce navigation buttons in the Beer Details page. This feature will allow users to navigate to the next or previous beer without having to return to the Beer List.
+- **Optimized Filter and Search**: I am working on improving the filtering and search functionality by displaying filter and search tags that can be removed with a single click. This will allow users to easily see and manage their active filters and search queries.
+- **Improved Caching**: Currently, the application uses session storage for caching. I plan to optimize this functionality for better performance and user experience.
+- **Image Placeholder**: For beers that do not have associated images, I plan to implement an image placeholder to improve the visual consistency of the application.
+- **Search Bar in Navbar**: I am planning to add a search bar in the navbar. This feature will allow users to search for a beer by name from anywhere within the application. I also plan to introduce search suggestions to help users find their desired beers more quickly.
 
-- **ApiHandler**: The **`ApiHandler`** class is responsible for making API requests to retrieve beer data. It uses the Axios library for handling HTTP requests. The class provides methods for fetching a list of beers, retrieving a beer by ID, fetching a random beer, and saving a beer. It also handles error handling and provides a configurable **`per_page`** value for pagination.
-- **useApi**: The **`useApi`** hook is a custom hook that simplifies API handling in functional components. It takes care of fetching data from the API and managing loading states, error handling, and caching. The hook accepts parameters such as **`isCaching`** (to enable/disable caching), **`filtreQuery`** (for applying filters to the API request), and **`searchQuery`** (for searching beers by name). It returns an object with data, current page, last page, loading state, and functions to navigate through the pages.
-
-By using the **`ApiHandler`** class and the **`useApi`** hook, the Beer App separates the API logic from the presentation components, promoting code modularity and reusability.
-
-This component-based and API-centric architecture allows for scalability, maintainability, and separation of concerns, making it easier to extend and enhance the application's functionality in the future.
+These improvements aim to enhance the user experience, increase the application's performance, and provide more efficient beer browsing. Stay tuned for these updates!
 
 ## **Contributing**
 

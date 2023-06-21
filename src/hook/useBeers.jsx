@@ -24,7 +24,7 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
 
     // set caching params
     const lastPageKey = isCaching ? "last_page" : "last_query_page";
-    const cacheKey = `beers_${page}_${query}`;
+    const cacheKey = `beers_page_${page}_${query}`;
 
     // fetch cached data from session storage
     const cachedData = sessionStorage.getItem(cacheKey);

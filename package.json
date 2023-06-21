@@ -1,7 +1,7 @@
 {
   "name": "beer_repo",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.3",
   "homepage": "https://test-ride.samtichiheb.com",
   "type": "module",
   "scripts": {

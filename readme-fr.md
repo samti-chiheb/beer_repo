@@ -1,101 +1,74 @@
 # **Beer App**
 
-L'application Beer est une application web qui permet aux utilisateurs de parcourir et de sauvegarder des informations sur différentes bières. Elle offre des fonctionnalités telles que la recherche de bières, l'application de filtres et la consultation des détails des bières. Les utilisateurs peuvent également sauvegarder leurs bières préférées pour référence ultérieure.
+Beer App est une application Web qui permet aux utilisateurs de parcourir et d'enregistrer des informations sur différentes bières. Elle propose des fonctionnalités telles que la recherche de bières, l'application de filtres et l'affichage des détails des bières. Les utilisateurs peuvent également enregistrer leurs bières préférées pour référence future.
 
 ## **Fonctionnalités**
 
-- Afficher une liste de bières avec des détails tels que le nom, la date de première brasserie, l'ABV et l'IBU.
+- Afficher une liste de bières avec des détails tels que le nom, la date de première brassage, l'ABV et l'IBU.
 - Rechercher des bières par nom.
 - Appliquer des filtres pour affiner la liste des bières.
-- Consulter des informations détaillées sur une bière spécifique.
-- Sauvegarder des bières préférées pour référence ultérieure.
-- Conception responsive pour une visualisation optimale sur différents appareils.
+- Voir des informations détaillées sur une bière spécifique.
+- Sauvegarder des bières favorites pour référence future.
+- Design adaptatif pour une visualisation optimale sur différents appareils.
 
 ## **Installation**
 
-Pour exécuter l'application Beer localement, suivez ces étapes :
+Pour exécuter Beer App localement, suivez ces étapes :
 
 1. Clonez le dépôt sur votre machine locale.
-2. Accédez au répertoire du projet.
+2. Naviguez vers le répertoire du projet.
 3. Installez les dépendances requises en exécutant la commande suivante :
-
+    
     ```
     npm install
     ```
     
-4. Lancez le serveur de développement en exécutant la commande suivante :
-
+4. Démarrez le serveur de développement en exécutant la commande suivante :
+    
     ```
     npm run dev
     ```
     
-5. Ouvrez votre navigateur web et rendez-vous sur **`http://localhost:5173`** pour accéder à l'application Beer.
+5. Ouvrez votre navigateur web et visitez **`http://localhost:5173`** pour accéder à Beer App.
 
-## **Technologies Utilisées**
+## **Technologies utilisées**
 
-L'application Beer est construite en utilisant les technologies suivantes :
+Beer App est construit en utilisant les technologies suivantes :
 
 - Vite : Un serveur de développement rapide et des outils de construction pour les applications web modernes.
-- React : Une bibliothèque JavaScript pour construire des interfaces utilisateur.
+- React : Une bibliothèque JavaScript pour la construction d'interfaces utilisateur.
 - React Router : Une bibliothèque de routage pour les applications React.
-- Axios : Un client HTTP basé sur les promesses pour effectuer des requêtes API.
-- styled-components : Une bibliothèque CSS-in-JS pour styliser les composants React.
+- Axios : Un client HTTP basé sur les promesses pour faire des requêtes API.
+- styled-components : Une bibliothèque CSS-in-JS pour le style des composants React.
 
-## **Architecture**
+## **Défis rencontrés**
 
-### **Arborescence**
-├── App.jsx
-├── Container
-│   ├── BeerDetails.jsx
-│   ├── BeerList.jsx
-│   └── NotFound.jsx
-├── assets
-│   └── react.svg
-├── components
-│   ├── BeerCard.jsx
-│   ├── Filter.jsx
-│   ├── ListTable.jsx
-│   ├── Pagination.jsx
-│   ├── Search.jsx
-│   ├── common
-│   │   ├── SaveButton.jsx
-│   │   └── ShowAlert.jsx
-│   └── navbar
-│       └── Navbar.jsx
-├── hook
-│   └── useBeers.jsx
-├── index.css
-├── main.jsx
-└── utils
-    └── ApiHandler.js
+Le développement de l'application Beer App a été un processus d'apprentissage riche avec plusieurs défis à surmonter.
 
+- **Calcul de la dernière page** : L'API que j'ai utilisée ne fournit pas de point de terminaison pour la longueur, donc le calcul de la dernière page a été un défi. J'ai choisi de régler dynamiquement la dernière page à chaque appel d'API, ce qui a été une solution efficace pour ce problème.
 
-L'application Beer suit une architecture basée sur les composants. Voici un aperçu des principaux composants et de leurs responsabilités :
+- **Mise en cache des données** : La mise en cache des données a également été un défi car je ne savais pas comment le faire initialement. Au début, j'ai mis en cache les pages et un produit, mais j'ai ensuite réalisé que je pouvais extraire les pages pour obtenir le produit unique. Cette réalisation a contribué à améliorer l'efficacité de la mise en cache dans l'application.
 
-- **App** : Le composant racine qui configure le routage et rend les pages principales de l'application.
-- **BeerList** : Affiche la liste des bières et gère les fonctionnalités de recherche, de filtrage et de pagination.
-- **BeerDetails** : Affiche des informations détaillées sur une bière spécifique.
-- **Navbar** : Fournit des liens de navigation vers différentes sections de l'application.
-- **ListTable** : Rend la table des bières avec leurs détails de base.
-- **Pagination** : Gère la fonctionnalité de pagination pour naviguer dans la liste des bières.
-- **SearchComponent** : Fournit la barre de recherche pour rechercher des bières par nom.
-- **FilterComponent** : Permet aux utilisateurs d'appliquer des filtres pour affiner la liste des bières.
-- **BeerCard** : Affiche des informations détaillées sur une bière sous forme de carte.
-- **SaveButton** : Permet aux utilisateurs de sauvegarder une bière en tant que favorite.
+- **Pratique de React et styled-components** : Ce projet a été une excellente occasion de pratiquer React et styled-components. J'ai appris de nouvelles techniques et amélioré mes compétences dans ces technologies tout en développant une application fonctionnelle et utile.
 
-L'application utilise la classe **`ApiHandler`** et le hook **`useApi`** pour la gestion de l'API.
+Ces défis ont grandement contribué à ma croissance en tant que développeur et j'ai hâte de surmonter davantage de défis dans mes futurs projets.
 
-- **ApiHandler** : La classe **`ApiHandler`** est responsable de l'envoi des requêtes API pour récupérer les données sur les bières. Elle utilise la bibliothèque Axios pour gérer les requêtes HTTP. La classe fournit des méthodes pour récupérer une liste de bières, récupérer une bière par ID, obtenir une bière aléatoire et sauvegarder une bière. Elle gère également la gestion des erreurs et fournit une valeur configurable **`per_page`** pour la pagination.
-- **useApi** : Le hook **`useApi`** est un hook personnalisé qui simplifie la gestion de l'API dans les composants fonctionnels. Il se charge de récupérer les données de l'API et de gérer les états de chargement, la gestion des erreurs et le caching. Le hook accepte des paramètres tels que **`isCaching`** (pour activer/désactiver le caching), **`filtreQuery`** (pour appliquer des filtres à la requête API) et **`searchQuery`** (pour rechercher des bières par nom). Il renvoie un objet avec les données, la page courante, la dernière page, l'état de chargement et les fonctions pour naviguer entre les pages.
+## **Développement futur**
 
-En utilisant la classe **`ApiHandler`** et le hook **`useApi`**, l'application Beer sépare la logique de l'API des composants de présentation, favorisant ainsi la modularité et la réutilisabilité du code.
+Plusieurs améliorations sont prévues pour Beer App :
 
-Cette architecture basée sur les composants et centrée sur l'API permet la scalabilité, la maintenabilité et la séparation des responsabilités, facilitant ainsi l'extension et l'amélioration de la fonctionnalité de l'application à l'avenir.
+- **Boutons de navigation dans les détails de la bière** : Je prévois d'introduire des boutons de navigation dans la page de détails de la bière. Cette fonctionnalité permettra aux utilisateurs de naviguer vers la bière suivante ou précédente sans avoir à revenir à la liste des bières.
+- **Filtre et recherche optimisés** : Je travaille à l'amélioration de la fonctionnalité de filtrage et de recherche en affichant des balises de filtre et de recherche qui peuvent être supprimées en un seul clic. Cela permettra aux utilisateurs de voir et de gérer facilement leurs filtres actifs et leurs requêtes de recherche.
+- **Amélioration de la mise en cache** : Actuellement, l'application utilise le stockage de session pour la mise en cache. Je prévois d'optimiser cette fonctionnalité pour une meilleure performance et expérience utilisateur.
+- **Image placeholder** : Pour les bières qui n'ont pas d'images associées, je prévois d'implémenter une image placeholder pour améliorer la cohérence visuelle de l'application.
+- **Barre de recherche dans la barre de navigation** : Je prévois d'ajouter une barre de recherche dans la barre de navigation. Cette fonctionnalité permettra aux utilisateurs de rechercher une bière par nom depuis n'importe où dans l'application. Je prévois également d'introduire des suggestions de recherche pour aider les utilisateurs à trouver plus rapidement les bières qu'ils désirent.
 
-## **Contributions**
+Ces améliorations visent à améliorer l'expérience utilisateur, augmenter les performances de l'application et offrir une navigation plus efficace dans les bières. Restez à l'écoute pour ces mises à jour !
 
-Les contributions au projet Beer sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des demandes de fonctionnalités, veuillez ouvrir une issue sur le dépôt GitHub.
+## **Contribuer**
+
+Les contributions au projet Beer App sont les bienvenues ! Si vous avez des suggestions, des rapports de bugs ou des demandes de fonctionnalités, veuillez ouvrir un problème sur le dépôt GitHub.
 
 ## **Licence**
 
-L'application Beer est open source et disponible sous la **[Licence MIT](https://opensource.org/licenses/MIT)**.
+Beer App est open source et disponible sous la **[Licence MIT](https://opensource.org/licenses/MIT)**.
