@@ -36,7 +36,7 @@ const Pagination = ({
     if (currentPage < lastPage) handlePageChange(currentPage + 1);
   };
   const handleSelectPage = (e) => {
-    handlePageChange(e.target.value);
+    handlePageChange(parseInt(e.target.value));
   }
 
   return (

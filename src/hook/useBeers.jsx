@@ -16,7 +16,7 @@ const useBeer = (isCaching = true, filtreQuery = "", searchQuery = "") => {
   // execute fetchData on each changement of the dependancy array [current page , query]
   useEffect(() => {
     fetchData(currentPage, query);
-  }, [currentPage, query]);
+  }, [currentPage, query, filtreQuery, searchQuery]);
   
   // fetch data
   const fetchData = async (page, query) => {
