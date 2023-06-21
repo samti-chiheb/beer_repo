@@ -1,10 +1,10 @@
-import {styled} from 'styled-components'
+import {styled } from 'styled-components'
 
-export const StyledInput = styled.input`
-  width: 100%;
+const StyledSearchBox = styled.input`
+  margin-right: 6px;
+  width: 75%;
   padding: 8px;
-  border: none;
-  border-bottom: 2px solid #ebdcfa;
+  border: 2px solid #ebdcfa;
   background-color: transparent;
   color: #213547;
   white-space: nowrap;
@@ -13,7 +13,7 @@ export const StyledInput = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom: 1px solid #9376ad;
+    border-color: #9376ad;
   }
 
   &::placeholder {
@@ -26,9 +26,4 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const StyledLabel = styled.label`
-  display: block;
-  margin-top: 16px;
-  color: #213547;
-  font-weight: 700;
-`;
+export default StyledSearchBox ;

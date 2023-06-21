@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import useBeers from "../hook/useBeers";
-import ListTable from "../components/ListTable";
-import Pagination from "../components/Pagination";
-import Search from "../components/Search";
-import FilterComponent from "../components/Filter";
-import { StyledButton } from "../components/styles/Button.style";
+import { StyledButton, Filter, Search, Pagination, ListTable } from "../components";
 
 const BeerList = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,10 +41,7 @@ const BeerList = () => {
     <div className="beer-list">
       <h1>Beer List</h1>
       <Search onSearch={handleSearch} onPageChange={handlePageChange} />
-      <FilterComponent
-        onFilter={handleFilter}
-        onPageChange={handlePageChange}
-      />
+      <Filter onFilter={handleFilter} onPageChange={handlePageChange} />
       <StyledButton onClick={handleReset}>Reset</StyledButton>
       <ListTable beers={data} isLoading={isLoading} />
       <Pagination

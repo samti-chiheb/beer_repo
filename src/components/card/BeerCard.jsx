@@ -1,7 +1,6 @@
 import React from "react";
-import SaveButton from "./common/saveButton";
-import { Card } from "./styles/Carde.style";
-
+import {SaveButton} from "../../components";
+import { Card } from "./Carde.style";
 
 const BeerCard = ({ beer }) => {
   // Destructure the properties from the beer object

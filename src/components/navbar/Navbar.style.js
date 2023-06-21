@@ -8,7 +8,7 @@ export const StyledNavbar = styled.nav`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   margin: 0 auto;
   height: 50px;
 

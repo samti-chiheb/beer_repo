@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { StyledSearchBox } from "./styles/SearchBox.styled";
-import { StyledButton } from "./styles/Button.style";
+import { StyledButton, StyledSearchBox } from "../../components";
 
 const SearchComponent = ({ onSearch, onPageChange }) => {
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
-    // handle text search and pass it 
+    // handle text search and pass it
     onSearch(searchText);
 
     // set current page to 1

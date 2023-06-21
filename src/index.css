@@ -13,8 +13,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
-body, #root {
+body,
+#root {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ h1 {
   font-weight: 300;
 }
 
-.beer-list{
+.beer-list {
   max-width: 500px;
   width: 100%;
   margin: 32px auto;
@@ -45,5 +45,24 @@ h1 {
   flex-direction: column;
   width: 90vw;
   height: 100vh;
+}
 
+.one-beer-page {
+  margin: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+@media (min-width: 768px) {
+
+  .one-beer-page{
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px;
+  }
 }

@@ -1,6 +1,4 @@
-import { StyledButton } from "./styles/Button.style";
-import { StyledSelect } from "./styles/Select.styled";
-import { StyledPagination } from "./styles/Pagination.styled";
+import { StyledButton, StyledSelect, StyledPagination } from "../../components";
 
 const Pagination = ({
   query,
@@ -37,6 +35,9 @@ const Pagination = ({
   const handleNextPage = () => {
     if (currentPage < lastPage) handlePageChange(currentPage + 1);
   };
+  const handleSelectPage = (e) => {
+    handlePageChange(e.target.value);
+  }
 
   return (
     <StyledPagination>
@@ -53,7 +54,7 @@ const Pagination = ({
       <span>
         Current Page:
         {/* Page selection */}
-        <StyledSelect value={currentPage} onChange={handlePageChange}>
+        <StyledSelect value={currentPage} onChange={handleSelectPage}>
           {options}
         </StyledSelect>
       </span>

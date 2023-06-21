@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledPagination = styled.div`
+const StyledPagination = styled.div`
 display: flex;
   width: 100%;
   opacity: 0.8;
@@ -8,3 +8,5 @@ display: flex;
   justify-content: center;
   margin-bottom: 16px;
 `;
+
+export default StyledPagination;

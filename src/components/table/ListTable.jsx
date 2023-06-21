@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { StyledTable } from "./styles/Table.styled";
-import TableLoader from "./TableLoader";
+import { StyledTable } from "./Table.style"
+import {TableLoader} from "../../components";
 
 const ListTable = ({ beers, isLoading }) => {
   const navigate = useNavigate();

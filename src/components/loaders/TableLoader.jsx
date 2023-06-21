@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledTableLoader } from "./styles/TableLoader.styled";
+import { StyledTableLoader } from "./styles/TableLoader.style";
 
 const TableLoader = () => {
   const rows = new Array(20).fill(null); // Your table shows 20 rows each time

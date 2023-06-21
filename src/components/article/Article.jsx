@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledArticle } from "./styles/Article.style";
+import { StyledArticle } from "./Article.style";
 
 const Article = ({ beer }) => {
   const {

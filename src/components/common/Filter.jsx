@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { StyledInput, StyledLabel } from "./styles/Input.styled";
-import { StyledButton } from "./styles/Button.style";
+import { StyledInput, StyledButton } from "../../components";
 
 
-const FilterComponent = ({ onFilter, onPageChange }) => {
+const Filter = ({ onFilter, onPageChange }) => {
   const [brewedBefore, setBrewedBefore] = useState("");
   const [food, setFood] = useState("");
   const [abvGt, setAbvGt] = useState("");
@@ -32,7 +31,7 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
   //rendre filtre component
   return (
     <div>
-      <StyledLabel htmlFor="abvGt">Brewed before : </StyledLabel>
+      <label htmlFor="abvGt">Brewed before : </label>
       <StyledInput
         placeholder="mm-yyyy"
         type="text"
@@ -40,7 +39,7 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
         value={brewedBefore}
         onChange={(e) => setBrewedBefore(e.target.value)}
       />
-      <StyledLabel htmlFor="abvGt">ABV Greater than : </StyledLabel>
+      <label htmlFor="abvGt">ABV Greater than : </label>
       <StyledInput
         id="abvGt"
         type="number"
@@ -50,7 +49,7 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
         value={abvGt}
         onChange={(e) => setAbvGt(e.target.value)}
       />
-      <StyledLabel htmlFor="food">Food pairing : </StyledLabel>
+      <label htmlFor="food">Food pairing : </label>
       <StyledInput
         type="text"
         id="food"
@@ -63,4 +62,4 @@ const FilterComponent = ({ onFilter, onPageChange }) => {
   );
 };
 
-export default FilterComponent;
+export default Filter;

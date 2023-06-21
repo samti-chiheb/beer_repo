@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledSelect = styled.select`
+const StyledSelect = styled.select`
   padding: 8px;
   margin: 0 8px;
   border: none;
@@ -24,3 +24,5 @@ export const StyledSelect = styled.select`
     word-wrap: break-word;
   }
 `;
+
+export default StyledSelect;

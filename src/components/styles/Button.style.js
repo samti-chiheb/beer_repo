@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   padding: 8px 16px;
   background-color: #9376ad;
   color: #fffffa;
@@ -26,3 +26,5 @@ export const StyledButton = styled.button`
     cursor: not-allowed;
   }
 `;
+
+export default StyledButton;
